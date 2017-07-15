@@ -30,7 +30,53 @@ and then connect
 	git@github.com:celery/billiard.git
 	git@github.com:celery/celery.git
 	git@github.com:celery/vine.git
-	
+
+# Improvement
+
+Normal nose test 
+```
+host:~/experiments/forking$ nosetests --verbose
+clientcode_test.test_series ... ok
+multiproc_test.test ... FAIL
+multiproc_test.test2 ... ok
+
+======================================================================
+FAIL: multiproc_test.test
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+    self.test(*self.arg)
+  File "/home/mdupont/experiments/forking/multiproc_test.py", line 2, in test
+    assert False
+AssertionError
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.374s
+```
+
+Now inside of the forked process we have a 100x speedup
+
+```
+('dotest2 called', '/home/mdupont/experiments/forking/Readme.md')
+clientcode_test.test_series ... ok
+multiproc_test.test ... FAIL
+multiproc_test.test2 ... ok
+
+======================================================================
+FAIL: multiproc_test.test
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+    self.test(*self.arg)
+  File "/home/mdupont/experiments/forking/multiproc_test.py", line 2, in test
+    assert False
+AssertionError
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (failures=1)
+```
 
 # Sources
 	
