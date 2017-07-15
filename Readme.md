@@ -17,13 +17,25 @@ For the future, be able to start a new loop in the child after you have changes 
 
 
 
-# Usage
+# RDB Usage
 
     python multiproc.py
+	
+	call rdb.set_trace()  in your code to debug
 	
 and then connect 
 
 	python client.py localhost 6899
+
+# Nose Usage
+
+    python multiproc.py
+	
+Put your common includes and loads into `clientcode.py`
+Load static data into there.
+
+Then the `clientcode_test.py` will run the tests. You can use the static data you loaded into the other module.
+	
 
 # Deps
 
