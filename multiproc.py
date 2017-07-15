@@ -2,6 +2,8 @@ from multiprocessing import Pool, Manager, Process
 import pdb
 import os
 import sys
+import time
+
 sys.path.append('./celery')
 sys.path.append('./vine')
 sys.path.append('./billiard')
@@ -11,11 +13,10 @@ from billiard.process import current_process
 from celery.contrib import rdb
 
 from nose.core import TestProgram
-
+import nose
 
 import  pyinotify
 #pyinotify.log.setLevel(2)
-
 # def do_test(x):
 #     print ("dotest called",x)
     
@@ -24,8 +25,13 @@ import  pyinotify
 
 def do_test2(x):
     print ("dotest2 called",x)
-    
-    t = TestProgram()
+
+    testRunner = nose.core.TextTestRunner(#stream=self.config.stream,
+                                          verbosity=3, #self.config.verbosity,
+        #config=self.config
+    )
+       
+    t = TestProgram(testRunner=testRunner)
     t.runTests()
 
 class EventHandler(pyinotify.ProcessEvent):
@@ -38,7 +44,7 @@ class EventHandler(pyinotify.ProcessEvent):
         do_test2(event.pathname)
         
     def process_IN_MOVED_FROM(self, event):
-        print "moved:", event.pathname
+        print "moved from:", event.pathname
         do_test2(event.pathname)
         
     def process_IN_CLOSE_WRITE(self, event):
@@ -69,7 +75,7 @@ def do_work():
     notifier.loop()
 
     print "after loop"
-    sleep(1)
+    time.sleep(1)
     
     # could instantiate some other library class,
     # call out to the file system,
