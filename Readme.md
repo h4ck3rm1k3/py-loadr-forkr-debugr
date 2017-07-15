@@ -34,14 +34,26 @@ and then connect
 
 # Sources
 	
-https://github.com/ionelmc/python-remote-pdb
-https://docs.python.org/2/library/os.html#os.waitpid
-https://github.com/celery/celery
-http://stolarscy.com/dryobates/2014-03/debugging_python_code/
-http://docs.celeryproject.org/en/latest/userguide/debugging.html
-https://stackoverflow.com/questions/9178751/use-pdb-set-trace-in-a-script-that-reads-stdin-via-a-pipe#34687825
-https://stackoverflow.com/questions/11996632/multiprocessing-in-python-while-limiting-the-number-of-running-processes
-https://docs.python.org/2/library/multiprocessing.html#module-multiprocessing
-http://code.activestate.com/recipes/576515/
-https://stackoverflow.com/questions/4163964/python-is-it-possible-to-attach-a-console-into-a-running-process
-http://www.python-course.eu/forking.php
+Attaching to debugger 
+* https://github.com/ionelmc/python-remote-pdb
+* https://github.com/celery/celery
+* http://stolarscy.com/dryobates/2014-03/debugging_python_code/
+* http://docs.celeryproject.org/en/latest/userguide/debugging.html
+* https://stackoverflow.com/questions/9178751/use-pdb-set-trace-in-a-script-that-reads-stdin-via-a-pipe#34687825
+* http://code.activestate.com/recipes/576515/
+* https://stackoverflow.com/questions/4163964/python-is-it-possible-to-attach-a-console-into-a-running-process
+
+Forking
+* https://docs.python.org/2/library/multiprocessing.html#module-multiprocessing
+* http://www.python-course.eu/forking.php
+* https://docs.python.org/2/library/os.html#os.waitpid
+* https://stackoverflow.com/questions/11996632/multiprocessing-in-python-while-limiting-the-number-of-running-processes
+
+Nose
+
+* http://ivory.idyll.org/articles/nose-intro.html
+* http://nose.readthedocs.io/en/latest/api/core.html
+* https://nose.readthedocs.io/en/latest/usage.html
+
+Pyinotify
+* https://github.com/seb-m/pyinotify
