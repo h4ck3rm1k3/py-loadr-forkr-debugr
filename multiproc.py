@@ -16,6 +16,10 @@ from nose.core import TestProgram
 import nose
 
 import  pyinotify
+
+import clientcode
+from clientcode import *
+
 #pyinotify.log.setLevel(2)
 # def do_test(x):
 #     print ("dotest called",x)
@@ -26,13 +30,22 @@ import  pyinotify
 def do_test2(x):
     print ("dotest2 called",x)
 
+    t0 = time.time()
+
     testRunner = nose.core.TextTestRunner(#stream=self.config.stream,
                                           verbosity=3, #self.config.verbosity,
         #config=self.config
     )
        
     t = TestProgram(testRunner=testRunner)
+
+    
     t.runTests()
+    t1 = time.time()
+    
+    total_n = t1-t0
+    print ("took total",total_n)
+    
 
 class EventHandler(pyinotify.ProcessEvent):
     def process_IN_CREATE(self, event):
