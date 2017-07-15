@@ -9,10 +9,14 @@ each child can import more code. If you want to lose the changes, just exit and 
 
 You use the simple telnet client to connect to the server from another shell.
 
+You can define tests with nose and montior for changes on to run them again.
+
 # Ideas
 
 For the future, be able to start a new loop in the child after you have changes you want to change, so have a spawnloop function you can call to start a new fork from the child to allow you to connect to the new children.
-	
+
+
+
 # Usage
 
     python multiproc.py
