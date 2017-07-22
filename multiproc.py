@@ -262,8 +262,15 @@ def main(data = None):
     forkr = Forkr(data)
     r = RunObject(forkr)
     forkr.runobj=r
-    forkr.runobj.do_test2("data")
+#   forkr.runobj.do_test2("data")
     forkr.main()
 
+def do_one(data = None):
+    forkr = Forkr(data)
+    r = RunObject(forkr)
+    forkr.runobj=r
+    forkr.runobj.do_test2("data")
+
+    
 if __name__ == "__main__":
     main()
