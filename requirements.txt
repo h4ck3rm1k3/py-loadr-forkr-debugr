@@ -1,7 +1,7 @@
 nose
 pyinotify
-pandas
-numpy
-matplotlib
+#pandas
+#numpy
+#matplotlib
 
 
