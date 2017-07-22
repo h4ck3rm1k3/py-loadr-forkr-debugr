@@ -1,4 +1,5 @@
-from six import print_ as print
+#from six import print_ as print
+from __future__ import print_function
 __global_test_data__=None
 
 #def test():

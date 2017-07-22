@@ -1,4 +1,5 @@
-from six import print_ as print
+from __future__ import print_function
+#from six import print_ as print
 __global_test_data__=None
  
 import pandas as pd
