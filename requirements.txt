@@ -3,5 +3,5 @@ pyinotify
 #pandas
 #numpy
 #matplotlib
-
+python-logilab-common
 
