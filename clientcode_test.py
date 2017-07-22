@@ -3,9 +3,7 @@ from __future__ import print_function
 __global_test_data__=None
  
 import pandas as pd
-
 import numpy as np
-
 import matplotlib.pyplot as plt
 import sys
 import pprint
@@ -18,4 +16,4 @@ def test_series():
     print ("Global", __global_test_data__)
 #    pprint.pprint( m._xdata_ )
 
-    s = pd.Series([1,3,5,np.nan,6,8])
+ #   s = pd.Series([1,3,5,np.nan,6,8])

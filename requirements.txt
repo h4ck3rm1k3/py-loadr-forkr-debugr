@@ -1,2 +1,7 @@
 nose
 pyinotify
+pandas
+numpy
+matplotlib
+
+
