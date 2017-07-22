@@ -1,2 +1,2 @@
 test :
-	python ./multiproc.py
+	python ./clientcode.py
