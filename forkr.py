@@ -1,3 +1,8 @@
+
+"""
+import forkr
+
+"""
 from multiprocessing import Pool, Manager, Process
 import pdb
 import os
@@ -28,11 +33,18 @@ import sys
 
 import logging
 
-for x in sys.modules:
-    d = logging.getLogger(x)
-    if d:
-        #print "setting log for ", x
-        d.setLevel(10)
+def set_logging():
+    for x in sys.modules:
+        d = logging.getLogger(x)
+        if d:
+            
+            #print "setting log for ", x
+            d.setLevel(logging.INFO)
+        else:
+            print "no logger", x
+
+set_logging()
+
 class DataPlugin(Plugin):
     
     def __init__(self, data):
@@ -50,6 +62,13 @@ class DataPlugin(Plugin):
         return test
 
     def install_data(self, test):
+        if 'test' not in dir(test):
+            raise Exception("no test in test")
+        if 'test' not in dir(test.test):
+            pprint.pprint(dir(test.test))
+            pprint.pprint(test.test.__dict__)
+            pprint.pprint(test.test)
+            raise Exception("no test in test.test")
         ttt= test.test.test
         ttt._xdata_ = self.data
         m = sys.modules[ttt.__module__]
@@ -117,17 +136,17 @@ class RunObject:
         dp = DataPlugin(self.forkr._data)
         noseConfig = nose.config.Config(
             showPlugins =True,
-            debug =99,
+            #debug =99,
     
 
         )
         #noseConfig.testMatchPat = 'Tests|_test'
-        noseConfig.verbosity = 9999
+        #noseConfig.verbosity = 9999
         #sys.exit(0 if nose.run() else 1)
         
         testRunner = nose.core.TextTestRunner(#stream=self.config.stream,
             config=noseConfig,
-            verbosity=1000, #self.config.verbosity,
+            #verbosity=1000, #self.config.verbosity,
             #config=self.config
         )
         t = TestProgram(testRunner=testRunner,
