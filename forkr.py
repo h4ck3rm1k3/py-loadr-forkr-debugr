@@ -33,13 +33,12 @@ import sys
 
 import logging
 
-def set_logging():
+def set_logging(level=logging.DEBUG):
     for x in sys.modules:
         d = logging.getLogger(x)
         if d:
-            
             #print "setting log for ", x
-            d.setLevel(logging.INFO)
+            d.setLevel(level)
         else:
             print "no logger", x
 
@@ -65,24 +64,16 @@ class DataPlugin(Plugin):
         if 'test' not in dir(test):
             raise Exception("no test in test")
         if 'test' not in dir(test.test):
-            pprint.pprint(dir(test.test))
-            pprint.pprint(test.test.__dict__)
-            pprint.pprint(test.test)
-            raise Exception("no test in test.test")
-        ttt= test.test.test
-        ttt._xdata_ = self.data
-        m = sys.modules[ttt.__module__]
-        #print "in module",ttt.__module__, "found"
-        #pprint.pprint( m.__dict__.keys())
-        #if "global_data" in  m.__dict__ :
-            #print "global data found"
-        #m.global_data=self.data
-        m.__global_test_data__=self.data
-        #else:
-        #    print "installing data"
-        #    m.global_data=self.data
-        #    print "global set now :"
-        #    pprint.pprint(m.global_data)
+            ttt= test.test
+            ttt._xdata_ = self.data
+            m = sys.modules[ttt.__module__]
+            m.__global_test_data__=self.data
+
+        else:
+            ttt= test.test.test
+            ttt._xdata_ = self.data
+            m = sys.modules[ttt.__module__]
+            m.__global_test_data__=self.data
 
     def prepareTestCase(self, test):
         print "data plugin prepare test case"
